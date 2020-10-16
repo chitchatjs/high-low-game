@@ -21,7 +21,7 @@ export default ax
           .then(
             ax
               .compound()
-              .add(ax.removeStateVar("expectNum"))
+              .add(ax.removeStateVar("expectedNum"))
               .add(generateRandomNumber)
               .add(ax.ask("Okay! try saying another number").build())
               .build()
