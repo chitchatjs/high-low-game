@@ -1,7 +1,7 @@
 {
-  "name": "hello-bot",
+  "name": "high-low-game",
   "version": "1.0.0",
-  "description": "A sample hello bot Alexa Skill using Chitchat JS.",
+  "description": "A sample high low number guessing game Alexa Skill using Chitchat JS.",
   "main": "dist/index.js",
   "scripts": {
     "build": "npm run clean && tsc",
@@ -18,7 +18,7 @@
   "author": "Kevindra Singh (kevindra.singh@gmail.com)",
   "license": "ISC",
   "dependencies": {
-    "@chitchatjs/alexa": "^0.3.1",
+    "@chitchatjs/alexa": "^0.3.2",
     "@chitchatjs/plugin-ax-kit": "^0.1.1"
   },
   "devDependencies": {

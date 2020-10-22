@@ -1,4 +1,4 @@
-import { alexa as ax } from "@chitchatjs/alexa";
+import { alexa as ax, ssml } from "@chitchatjs/alexa";
 
 import generateRandomNumber from "../blocks/generateRandomNumber";
 import handleUsersNumber from "../blocks/handleUsersNumber";
@@ -22,12 +22,33 @@ export default ax
               .compound()
               .add(ax.removeStateVar("expectedNum"))
               .add(generateRandomNumber)
-              .add(ax.ask("Okay! try saying another number").build())
+              .add(
+                ax
+                  .ask(
+                    ax
+                      .ssml("Okay! try saying another number")
+                      .voice(ssml.Voice.Brian)
+                      .rate(ssml.Rate.fast)
+                      .build()
+                  )
+                  .build()
+              )
               .build()
           )
           .build()
       )
-      .add(ax.whenIntentName("AMAZON.NoIntent").then(ax.say("Thanks for playing!")).build())
+      .add(
+        ax
+          .whenIntentName("AMAZON.NoIntent")
+          .then(
+            ax
+              .ask(
+                ax.ssml("Thanks for playing!").voice(ssml.Voice.Brian).rate(ssml.Rate.fast).build()
+              )
+              .build()
+          )
+          .build()
+      )
       .add(builtins)
       .build()
   )
