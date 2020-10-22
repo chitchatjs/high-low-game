@@ -1,6 +1,6 @@
 import { alexa as ax } from "@chitchatjs/alexa";
+
 import generateRandomNumber from "../blocks/generateRandomNumber";
-import builtins from "../builtins";
 
 /**
  * A block that gets the confirmation from the user
@@ -25,8 +25,6 @@ export default ax
           .build()
       )
       .add(ax.whenIntentName("AMAZON.NoIntent").then(ax.say("Thanks for playing!")).build())
-      .add(builtins)
-      .add(ax.end())
       .build()
   )
   .build();

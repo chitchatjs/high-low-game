@@ -1,5 +1,5 @@
 import { alexa as ax, Locale } from "@chitchatjs/alexa";
-export const supportedLocales: Locale[] = [Locale.en_US, Locale.en_AU, Locale.en_CA, Locale.en_GB, Locale.en_IN];
+export const supportedLocales: Locale[] = [Locale.en_US];
 
 export default ax
   .localize(supportedLocales)
