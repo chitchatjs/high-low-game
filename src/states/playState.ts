@@ -2,6 +2,7 @@ import { alexa as ax, ssml } from "@chitchatjs/alexa";
 
 import generateRandomNumber from "../blocks/generateRandomNumber";
 import handleUsersNumber from "../blocks/handleUsersNumber";
+import { normalVoice } from "../blocks/speech";
 import builtins from "../builtins";
 
 /**
@@ -22,17 +23,7 @@ export default ax
               .compound()
               .add(ax.removeStateVar("expectedNum"))
               .add(generateRandomNumber)
-              .add(
-                ax
-                  .ask(
-                    ax
-                      .ssml("Okay! try saying another number")
-                      .voice(ssml.Voice.Brian)
-                      .rate(ssml.Rate.fast)
-                      .build()
-                  )
-                  .build()
-              )
+              .add(normalVoice("Okay! try saying another number"))
               .build()
           )
           .build()
@@ -40,13 +31,7 @@ export default ax
       .add(
         ax
           .whenIntentName("AMAZON.NoIntent")
-          .then(
-            ax
-              .ask(
-                ax.ssml("Thanks for playing!").voice(ssml.Voice.Brian).rate(ssml.Rate.fast).build()
-              )
-              .build()
-          )
+          .then(ax.ask(normalVoice("Thanks for playing!")).build())
           .build()
       )
       .add(builtins)

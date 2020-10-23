@@ -7,8 +7,8 @@ export default ax
     ax
       .compound()
       .add(ax.info().name("CJS High Low Game").invocationName("high low game").build())
-      .add(ax.intent("AMAZON.YesIntent", ["yes"]).build())
-      .add(ax.intent("AMAZON.NoIntent", ["no"]).build())
+      .add(ax.intent("AMAZON.YesIntent").build())
+      .add(ax.intent("AMAZON.NoIntent").build())
       .build()
   )
   .build();

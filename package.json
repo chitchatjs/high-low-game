@@ -18,7 +18,7 @@
   "author": "Kevindra Singh (kevindra.singh@gmail.com)",
   "license": "ISC",
   "dependencies": {
-    "@chitchatjs/alexa": "^0.3.2",
+    "@chitchatjs/alexa": "^0.3.4",
     "@chitchatjs/plugin-ax-kit": "^0.1.1"
   },
   "devDependencies": {

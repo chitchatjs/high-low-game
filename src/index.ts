@@ -1,6 +1,7 @@
 import { alexa as ax, ssml } from "@chitchatjs/alexa";
 
 import artifacts from "./blocks/artifacts";
+import { excitedVoice } from "./blocks/speech";
 import playState from "./states/playState";
 import wantToPlay from "./states/wantToPlay";
 
@@ -14,15 +15,7 @@ let init = ax
       .compound()
       .add(artifacts)
       .add(
-        ax
-          .ask(
-            ax
-              .ssml("Welcome to High Low guessing game. Would you like to play?")
-              .voice(ssml.Voice.Brian)
-              .rate(ssml.Rate.fast)
-              .build()
-          )
-          .build()
+        ax.ask(excitedVoice("Welcome to High Low guessing game. Would you like to play?")).build()
       )
       .add(ax.goto("WantToPlay"))
       .build()

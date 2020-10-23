@@ -1,6 +1,7 @@
 import { alexa as ax, AlexaDialogContext, AlexaEvent, Locale, ssml } from "@chitchatjs/alexa";
 import { supportedLocales } from "../blocks/artifacts";
 import { IntentRequest } from "ask-sdk-model";
+import { excitedVoice, normalVoice } from "./speech";
 
 /**
  * A block that handles user input.
@@ -39,29 +40,8 @@ export default ax
             }
             return false;
           })
-          .then(
-            ax
-              .ask(
-                ax
-                  .ssml("{num} is correct! Would you like to play again?")
-                  .voice(ssml.Voice.Brian)
-                  .rate(ssml.Rate.fast)
-                  .emotion(ssml.Emotion.excited, ssml.Intensity.high)
-                  .build()
-              )
-              .build()
-          )
-          .otherwise(
-            ax
-              .ask(
-                ax
-                  .ssml("{num} is {highlow}, try again")
-                  .voice(ssml.Voice.Brian)
-                  .rate(ssml.Rate.fast)
-                  .build()
-              )
-              .build()
-          )
+          .then(ax.ask(excitedVoice("{num} is correct! Would you like to play again?")).build())
+          .otherwise(ax.ask(normalVoice("{num} is {highlow}, try again")).build())
           .build()
       )
       .build()

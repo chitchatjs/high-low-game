@@ -1,6 +1,7 @@
 import { alexa as ax, ssml } from "@chitchatjs/alexa";
 
 import generateRandomNumber from "../blocks/generateRandomNumber";
+import { normalVoice } from "../blocks/speech";
 
 /**
  * A block that gets the confirmation from the user
@@ -17,17 +18,7 @@ export default ax
           .then(
             ax
               .compound()
-              .add(
-                ax
-                  .ask(
-                    ax
-                      .ssml("Great! Try saying a number to start the game.")
-                      .voice(ssml.Voice.Brian)
-                      .rate(ssml.Rate.fast)
-                      .build()
-                  )
-                  .build()
-              )
+              .add(ax.ask(normalVoice("Great! Try saying a number to start the game.")).build())
               .add(generateRandomNumber)
               .add(ax.goto("Play"))
               .build()
@@ -37,11 +28,7 @@ export default ax
       .add(
         ax
           .whenIntentName("AMAZON.NoIntent")
-          .then(
-            ax.say(
-              ax.ssml("Thanks for playing!").voice(ssml.Voice.Brian).rate(ssml.Rate.fast).build()
-            )
-          )
+          .then(ax.say(normalVoice("Thanks for playing!")))
           .build()
       )
       .build()
