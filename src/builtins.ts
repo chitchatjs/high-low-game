@@ -1,10 +1,11 @@
-import { Locale } from "@chitchatjs/alexa";
-import { axkit } from "@chitchatjs/plugin-ax-kit";
-import { supportedLocales } from "./blocks/artifacts";
+import { ax } from "@chitchatjs/alexa";
+import { common } from "@chitchatjs/plugin-ax-common";
 
 /**
  * A plugin building block
  * It will help us render experiences for builtin intents like
  * - Stop, Cancel, Fallback etc.
  */
-export default axkit.builtin.all("You can guess a number, just say a number.", supportedLocales);
+export default common.defaultHandlers({
+  help: ax.ask("You can guess a number, just say a number.").build(),
+});

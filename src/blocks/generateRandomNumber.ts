@@ -8,6 +8,5 @@ export default ax
   .custom()
   .executor((c: AlexaDialogContext, e: AlexaEvent) => {
     c.platformState.globalState["expectedNum"] = Math.floor(Math.random() * 100);
-    return c.currentResponse.response;
   })
   .build();
